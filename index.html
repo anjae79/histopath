@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histopathology Core Center - 부산대학교 의과대학</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .form-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-group {
+            flex: 2;
+        }
+        
+        .count-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .special-type-row,
+        .sub-service-row {
+            margin-top: -0.5rem;
+        }
+        
+        .special-type-row .form-group,
+        .sub-service-row .form-group {
+            width: 100%;
+        }
+        
+        .special-type-row select,
+        .sub-service-row select {
+            color: #2c5282;
+            width: 100%;
+        }
+        
+        .quantity-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quantity-group input[type="number"] {
+            width: 100%;
+        }
+        
+        input[type="text"]::placeholder {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .service-group,
+            .count-group {
+                flex: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="assets/images/staining/pnu-logo.png" alt="부산대학교 의과대학 로고" class="logo-image">
+                    <div class="logo-text">
+                        <div class="text-line">
+                            <span class="university-name">Pusan National University</span>
+                            <span class="center-name">Histopathology Core Center</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#services">서비스 소개</a></li>
+                    <li><a href="#guide">이용안내</a></li>
+                    <li><a href="#contact">서비스 신청</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>부산대학교 의과대학<br>Histopathology Core Center</h1>
+                <p style="white-space: nowrap;">최첨단 장비와 전문 인력을 통한 정확하고 신뢰할 수 있는 조직병리 분석 서비스를 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 염색 이미지 슬라이더 -->
+    <section class="staining-showcase">
+        <div class="container">
+            <div class="showcase-slider">
+                <div class="showcase-track">
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/h&e.jpg" alt="H&E 염색">
+                        <div class="showcase-caption">
+                            <h3>H&E 염색</h3>
+                            <p>조직의 기본 구조를 관찰하는 기본 염색법</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/특수염색.jpg" alt="특수염색">
+                        <div class="showcase-caption">
+                            <h3>특수염색</h3>
+                            <p>특정 세포/조직 성분의 선택적 염색</p>
+                        </div>
+                    </div>
+                                        <div class="showcase-slide">
+                        <img src="assets/images/staining/ihc2.jpg" alt="면역조직화학염색">
+                        <div class="showcase-caption">
+                            <h3>면역조직화학염색 (IHC)</h3>
+                            <p>특정 단백질의 발현 및 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/icc.jpg" alt="면역세포화학염색">
+                        <div class="showcase-caption">
+                            <h3>면역세포화학염색 (ICC)</h3>
+                            <p>세포 내 특정 단백질의 발현 및 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide" data-type="fluorescence">
+                        <img src="assets/images/staining/if.jpg" alt="면역형광염색">
+                        <div class="showcase-caption">
+                            <h3>면역형광염색 (IF)</h3>
+                            <p>형광표지를 이용한 단백질 발현 분석</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/fish.jpg" alt="FISH 염색">
+                        <div class="showcase-caption">
+                            <h3>형광제자리부합법 (FISH)</h3>
+                            <p>특정 DNA/RNA 서열의 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/tma.jpg" alt="TMA">
+                        <div class="showcase-caption">
+                            <h3>Tissue Microarray (TMA)</h3>
+                            <p>다수의 조직을 한번에 분석하는 고효율 분석법</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-nav-buttons">
+                <button class="showcase-nav prev" aria-label="이전 이미지">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="showcase-dots"></div>
+                <button class="showcase-nav next" aria-label="다음 이미지">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 소개 섹션 -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>서비스 소개</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>기본 조직처리 및 H&E 염색</h3>
+                    <p>기본적인 조직 처리와 H&E 염색<br>서비스를 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>파라핀 포매</li>
+                        <li>동결절편</li>
+                        <li>미세절편</li>
+                        <li>H&E 염색</li>
+                        <li>TMA (Tissue Microarray)</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>특수염색</h3>
+                    <p>다양한 특수염색 기법을 활용한<br>조직 분석을 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>PAS 염색</li>
+                        <li>Masson's Trichrome 염색</li>
+                        <li>Alcian Blue 염색</li>
+                        <li>Pico Sirius Red 염색</li>
+                        <li>Oil Red O 염색 등</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>면역염색 및 분자병리</h3>
+                    <p>고급 면역염색 기법을 활용한<br>단백질 발현 분석 서비스를 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>면역조직화학염색 (IHC)</li>
+                        <li>면역세포화학염색 (ICC)</li>
+                        <li>면역형광염색 (IF)</li>
+                        <li>형광제자리부합법 (FISH)</li>
+                        <li>DNA and RNA Extraction<br>from FFPE Tissue</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 이용안내 섹션 -->
+    <section class="guide" id="guide">
+        <div class="container">
+            <h2>이용안내</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <i class="far fa-clock"></i>
+                    <h3>운영시간</h3>
+                    <ul>
+                        <li>평일: 오전 9시 - 오후 6시</li>
+                        <li>점심시간: 12시 - 13시</li>
+                        <li>검체 접수: 오후 3시 - 5시</li>
+                        <li>주말 및 공휴일 휴무</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>이용 절차</h3>
+                    <ul>
+                        <li>전화 또는 이메일 상담</li>
+                        <li>온라인 신청서 제출</li>
+                        <li>검체 접수 (오후 3-5시)</li>
+                        <li>결과 수령 및 확인</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-vial"></i>
+                    <h3>검체 준비</h3>
+                    <ul>
+                        <li>고정액: 10% NBF 사용</li>
+                        <li>검체크기: 5mm 이하</li>
+                        <li>고정액양: 조직크기10-15배</li>
+                        <li>라벨링: 8자(A-Z,0-9)</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>상담 및 문의</h3>
+                    <ul>
+                        <li>전화: 051-510-8057, 8525</li>
+                        <li>이메일: histopath@pusan.ac.kr</li>
+                        <li>방문 상담: 사전 예약 필수</li>
+                        <li>평일 상시 상담 가능</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fab fa-kickstarter-k"></i>
+                    <h3>온라인 문의</h3>
+                    <ul>
+                        <li>카카오톡 실시간 상담</li>
+                        <li><a href="http://pf.kakao.com/_CkxhTG" class="kakao-link">채널 바로가기</a></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>위치</h3>
+                    <ul>
+                        <li>부산대학교 양산캠퍼스</li>
+                        <li>첨단의생명융합센터 202호</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 신청 섹션 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>서비스 신청</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>신청서 작성 안내</h3>
+                    <ul>
+                        <li>모든 필수 항목(*)을 빠짐없이 기재해 주세요.</li>
+                        <li>검체 정보를 정확하게 입력해 주세요.</li>
+                        <li>특별한 요청사항이 있다면 비고란에 작성해 주세요.</li>
+                    </ul>
+                </div>
+                <div id="service-requests">
+                    <form class="contact-form" id="serviceForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">신청자/담당교수 *</label>
+                                <input type="text" id="name" name="name" placeholder="신청자/담당교수" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="institution">소속기관 *</label>
+                                <input type="text" id="institution" name="institution" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">이메일 *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">연락처 *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group service-group">
+                                <label for="main-service">의뢰 서비스 *</label>
+                                <select id="main-service" name="main-service" required>
+                                    <option value="">서비스를 선택하세요</option>
+                                    <option value="paraffin">파라핀 포매</option>
+                                    <option value="frozen">동결절편</option>
+                                    <option value="special">특수염색</option>
+                                    <option value="ihc">면역조직화학염색 (IHC)</option>
+                                    <option value="icc">면역세포화학염색 (ICC)</option>
+                                    <option value="if">면역형광염색 (IF)</option>
+                                    <option value="fish">형광제자리부합법 (FISH)</option>
+                                    <option value="tma">Tissue Microarray (TMA)</option>
+                                    <option value="extraction">DNA/RNA 추출</option>
+                                </select>
+                            </div>
+                            <div class="form-group count-group">
+                                <label for="sample-count">검체 수 *</label>
+                                <input type="number" id="sample-count" name="sample-count" min="1" required>
+                            </div>
+                        </div>
+                        <div class="special-type-row" style="display: none;">
+                            <div class="form-group">
+                                <label for="special-type">특수염색 종류 *</label>
+                                <select id="special-type" name="special-type" required disabled>
+                                    <option value="">특수염색 종류를 선택하세요</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="sub-service-row" style="display: none;">
+                            <div class="form-group">
+                                <label for="sub-service">세부 서비스 *</label>
+                                <select id="sub-service" name="sub-service" required disabled>
+                                    <option value="">세부 서비스를 선택하세요</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="slide-count">슬라이드 수 *</label>
+                            <input type="number" id="slide-count" name="slide-count" min="1" required>
+                        </div>
+                        <div class="selected-service-info">
+                            <div class="info-row">
+                                <span>검체 수</span>
+                                <span>의뢰 서비스</span>
+                                <span>세부 서비스</span>
+                                <span>슬라이드 수</span>
+                            </div>
+                            <div id="selected-services-list">
+                                <!-- 선택된 서비스들이 여기에 추가됩니다 -->
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" id="add-service-btn" class="btn btn-secondary">+ 추가 의뢰 서비스</button>
+                        </div>
+                        <div class="form-group">
+                            <label for="sample-info">검체 정보 *</label>
+                            <textarea id="sample-info" name="sample-info" rows="4" placeholder="검체명과 조직 방향을 입력해주세요." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="request-details">요청사항</label>
+                            <textarea id="request-details" name="request-details" rows="4" placeholder="추가 요청사항이 있으시면 입력해주세요."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">신청하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
