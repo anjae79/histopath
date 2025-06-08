@@ -223,4 +223,56 @@ select.form-control {
     text-align: center;
     color: #212529;
     padding: 5px;
+}
+
+/* 모바일 반응형 스타일 */
+@media screen and (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .summary-row {
+        flex-direction: column;
+    }
+
+    .summary-item {
+        margin-bottom: 15px;
+    }
+
+    .info-row, .value-row {
+        flex-direction: column;
+    }
+
+    .info-row span, .value-row span {
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .service-request {
+        padding: 15px;
+    }
+
+    .selected-service-info {
+        margin: 10px 0;
+    }
+
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
 } 
