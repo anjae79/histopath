@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조직병리핵심센터 분석 신청서</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 8px;
+            background-color: #f5f5f5;
+            font-size: 11px;
+        }
+        
+        .application-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #005baa;
+            padding-bottom: 8px;
+        }
+        
+        .form-header h1 {
+            color: #005baa;
+            margin: 2px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .form-header .subtitle {
+            color: #666;
+            margin-top: 4px;
+            font-size: 12px;
+        }
+        
+        .form-section {
+            margin-bottom: 8px;
+        }
+        
+        .section-title {
+            background: linear-gradient(90deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            padding: 4px 8px;
+            margin: 0 0 6px 0;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+        
+        .form-table th,
+        .form-table td {
+            border: 1px solid #ddd;
+            padding: 3px 6px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 10px;
+        }
+        
+        .form-table th {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            font-weight: bold;
+            width: 100px;
+            color: #005baa;
+        }
+        
+        .form-table input[type="text"],
+        .form-table input[type="email"],
+        .form-table input[type="tel"],
+        .form-table input[type="date"],
+        .form-table input[type="number"],
+        .form-table textarea,
+        .form-table select {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 11px;
+            box-sizing: border-box;
+        }
+        
+        .form-table textarea {
+            resize: vertical;
+            min-height: 30px;
+        }
+        
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+        }
+        
+        .services-table th,
+        .services-table td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: center;
+            font-size: 11px;
+        }
+        
+        .services-table th {
+            background: linear-gradient(135deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .services-table input[type="number"],
+        .services-table input[type="text"],
+        .services-table select {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            font-size: 11px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            transform: scale(1.0);
+            accent-color: #00A54D;
+        }
+        
+        .signature-section {
+            margin-top: 8px;
+            text-align: right;
+            font-size: 10px;
+        }
+        
+        .signature-box {
+            display: inline-block;
+            border: 2px solid #005baa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            width: 80px;
+            height: 30px;
+            margin-left: 8px;
+            vertical-align: top;
+        }
+        
+        .form-footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .required {
+            color: #00A54D;
+            font-weight: bold;
+        }
+        
+        .receipt-number-section {
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .receipt-number-box {
+            border: 1px solid #005baa;
+            padding: 3px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            width: 160px;
+        }
+        
+        .receipt-number-box label {
+            display: block;
+            font-weight: bold;
+            color: #005baa;
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+        
+        .receipt-number-box input {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 11px;
+            box-sizing: border-box;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .print-btn {
+            background: linear-gradient(90deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            margin: 10px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .print-btn:hover {
+            background: linear-gradient(90deg, #004494 0%, #008a42 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* 모바일 반응형 스타일 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 12px;
+                padding: 4px;
+            }
+            
+            .application-form {
+                max-width: 100%;
+                margin: 0;
+                padding: 10px;
+                border-radius: 4px;
+            }
+            
+            .form-header h1 {
+                font-size: 16px;
+                margin: 4px 0;
+            }
+            
+            .form-header .subtitle {
+                font-size: 11px;
+            }
+            
+            .section-title {
+                font-size: 12px;
+                padding: 6px 8px;
+                margin-bottom: 8px;
+            }
+            
+            .form-table {
+                display: block;
+                overflow-x: auto;
+                border: none;
+            }
+            
+            .form-table tr {
+                display: block;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 8px;
+                background: #f9f9f9;
+            }
+            
+            .form-table th,
+            .form-table td {
+                display: block;
+                width: 100% !important;
+                border: none;
+                padding: 4px 0;
+                text-align: left;
+            }
+            
+            .form-table th {
+                background: none;
+                color: #2c5282;
+                font-weight: bold;
+                margin-bottom: 4px;
+                font-size: 12px;
+            }
+            
+            .form-table input,
+            .form-table select,
+            .form-table textarea {
+                width: 100%;
+                font-size: 14px;
+                padding: 8px;
+                border-radius: 4px;
+            }
+            
+            .services-table {
+                display: block;
+                overflow-x: auto;
+                border: none;
+            }
+            
+            .services-table thead {
+                display: none;
+            }
+            
+            .services-table tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background: #f9f9f9;
+            }
+            
+            .services-table td {
+                display: block;
+                width: 100%;
+                border: none;
+                padding: 4px 0;
+                position: relative;
+                text-align: left;
+            }
+            
+            .services-table td:before {
+                content: attr(data-label) ": ";
+                font-weight: bold;
+                color: #2c5282;
+                display: block;
+                margin-bottom: 2px;
+                font-size: 11px;
+            }
+            
+            .services-table input,
+            .services-table select {
+                width: 100%;
+                font-size: 14px;
+                padding: 6px;
+                border-radius: 4px;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .checkbox-item {
+                font-size: 12px;
+                align-items: flex-start;
+            }
+            
+            .checkbox-item input[type="checkbox"] {
+                transform: scale(1.2);
+                margin-right: 8px;
+            }
+            
+            .receipt-number-section {
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+            
+            .receipt-number-box {
+                width: 100%;
+                max-width: 250px;
+                padding: 8px;
+            }
+            
+            .receipt-number-box label {
+                font-size: 12px;
+            }
+            
+            .receipt-number-box input {
+                font-size: 14px;
+                padding: 6px;
+            }
+            
+            .signature-section {
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .signature-section p {
+                margin-bottom: 8px;
+                font-size: 12px;
+            }
+            
+            .signature-box {
+                width: 100px;
+                height: 40px;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            .form-footer {
+                text-align: center;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            .form-footer p {
+                margin-bottom: 6px;
+            }
+            
+            .print-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+                margin-top: 15px;
+                border-radius: 6px;
+            }
+            
+            /* 분석 선택 그리드를 모바일에서 단일 컬럼으로 */
+            div[style*="grid-template-columns"] {
+                display: block !important;
+            }
+            
+            div[style*="grid-template-columns"] > div {
+                margin-bottom: 15px;
+            }
+            
+            h5 {
+                font-size: 13px !important;
+                margin: 8px 0 !important;
+            }
+        }
+        
+        @media print {
+            @page {
+                margin: 0.5in;
+                size: A4;
+            }
+            
+            body {
+                background-color: white;
+                padding: 0;
+                font-size: 10px;
+                line-height: 1.2;
+            }
+            
+            .application-form {
+                box-shadow: none;
+                padding: 10px;
+                max-width: none;
+                margin: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .form-header h1 {
+                font-size: 16px;
+            }
+            
+            .form-header .subtitle {
+                font-size: 10px;
+            }
+            
+            .section-title {
+                font-size: 11px;
+                padding: 3px 8px;
+            }
+            
+            .form-table th,
+            .form-table td {
+                padding: 3px 5px;
+                font-size: 10px;
+            }
+            
+            .services-table th,
+            .services-table td {
+                padding: 2px;
+                font-size: 9px;
+            }
+            
+            .checkbox-item {
+                font-size: 9px;
+            }
+            
+            .receipt-number-box {
+                width: 150px;
+                padding: 5px;
+            }
+            
+            .receipt-number-box label {
+                font-size: 10px;
+            }
+            
+            .receipt-number-box input {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="application-form">
+        <div class="form-header">
+            <h1>부산대학교 의과대학 조직병리코어센터</h1>
+            <h1>신청서</h1>
+            <div class="subtitle">Histopathology Core Center Request Form</div>
+        </div>
+
+        <form id="applicationForm">
+            <!-- 접수번호 -->
+            <div class="receipt-number-section">
+                <div class="receipt-number-box">
+                    <label for="receipt_number_top">접수번호 (Receipt No.)</label>
+                    <input type="text" id="receipt_number_top" name="receipt_number_top" placeholder="접수번호를 입력하세요">
+                </div>
+            </div>
+            
+            <!-- 신청자 정보 -->
+            <div class="form-section">
+                <div class="section-title">■ 신청자 정보 (Applicant Information)</div>
+                <table class="form-table">
+                    <tr>
+                        <th style="width: 80px;">신청일 <span class="required">*</span></th>
+                        <td style="width: 120px;"><input type="date" name="application_date" required></td>
+                        <th style="width: 100px;">신청자/담당교수 <span class="required">*</span></th>
+                        <td colspan="3"><input type="text" name="applicant_name" placeholder="신청자/담당교수" required></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 80px;">소속기관 <span class="required">*</span></th>
+                        <td style="width: 200px;"><input type="text" name="institution" placeholder="소속기관" required></td>
+                        <th style="width: 80px;">부서/학과</th>
+                        <td colspan="3"><input type="text" name="department" placeholder="부서/학과를 입력하세요"></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 80px;">연락처 <span class="required">*</span></th>
+                        <td style="width: 200px;"><input type="tel" name="phone" placeholder="연락 가능한 전화번호" required></td>
+                        <th style="width: 80px;">이메일 <span class="required">*</span></th>
+                        <td colspan="3"><input type="email" name="email" placeholder="결과 수령용 이메일 주소" required></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 분석 신청 내역 -->
+            <div class="form-section">
+                <div class="section-title">■ 신청 내역 (Request Details)</div>
+                
+                <!-- 분석 선택 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                    <div>
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">1. 기본 조직처리</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="paraffin" name="services" value="paraffin">
+                                <label for="paraffin">파라핀 포매</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="frozen" name="services" value="frozen">
+                                <label for="frozen">동결절편</label>
+                            </div>
+                        </div>
+                        
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">2. 특수염색</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pas" name="services" value="pas">
+                                <label for="pas">PAS</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="masson" name="services" value="masson">
+                                <label for="masson">Masson</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="alcian_blue" name="services" value="alcian_blue">
+                                <label for="alcian_blue">Alcian Blue</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pico_sirius_red" name="services" value="pico_sirius_red">
+                                <label for="pico_sirius_red">Pico Sirius Red</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other_special" name="services" value="other_special">
+                                <label for="other_special">기타 특수염색</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">3. 면역염색</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ihc" name="services" value="ihc">
+                                <label for="ihc">IHC</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="icc" name="services" value="icc">
+                                <label for="icc">ICC</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="if_staining" name="services" value="if_staining">
+                                <label for="if_staining">IF</label>
+                            </div>
+                        </div>
+                        
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">4. 분자병리 & 기타</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fish" name="services" value="fish">
+                                <label for="fish">FISH</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dna_extraction" name="services" value="dna_extraction">
+                                <label for="dna_extraction">DNA 추출</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rna_extraction" name="services" value="rna_extraction">
+                                <label for="rna_extraction">RNA 추출</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tma" name="services" value="tma">
+                                <label for="tma">TMA</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 서비스 상세 정보 테이블 -->
+                <table class="services-table">
+                    <thead>
+                        <tr>
+                            <th>검체 수<br>(Sample Count)</th>
+                            <th>의뢰 분석<br>(Analysis)</th>
+                            <th>세부 분석<br>(Detail Analysis)</th>
+                            <th>슬라이드 수<br>(Slide Count)</th>
+                            <th>의뢰 총수량<br>(Total Count)</th>
+                            <th>비고<br>(Note)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTableBody">
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_1" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_1" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_1" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_1" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_1" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_1" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_2" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_2" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_2" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_2" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_2" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_2" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_3" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_3" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_3" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_3" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_3" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_3" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_4" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_4" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_4" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_4" min="1" placeholder="1"></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_4" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_4" placeholder="비고"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 검체 정보 -->
+            <div class="form-section">
+                <div class="section-title">■ 검체 정보 (Sample Information)</div>
+                <table class="form-table">
+                    <tr>
+                        <th>검체명 (Sample Name) <span class="required">*</span></th>
+                        <td><textarea name="sample_name" placeholder="검체명을 상세히 기재해주세요" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>검체 종류 (Sample Type)</th>
+                        <td>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tissue" name="sample_type" value="tissue">
+                                    <label for="tissue">조직 (Tissue)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cell" name="sample_type" value="cell">
+                                    <label for="cell">세포 (Cell)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other_sample" name="sample_type" value="other">
+                                    <label for="other_sample">기타</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>고정액 (Fixative)</th>
+                        <td>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="nbf" name="fixative" value="nbf">
+                                    <label for="nbf">10% NBF</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="alcohol" name="fixative" value="alcohol">
+                                    <label for="alcohol">Alcohol</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other_fixative" name="fixative" value="other">
+                                    <label for="other_fixative">기타</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>특별 요청사항 (Special Requests)</th>
+                        <td><textarea name="special_requests" placeholder="특별한 처리 방법이나 주의사항이 있으면 기재해주세요"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <!-- 서명 -->
+            <div class="signature-section">
+                <p>위와 같이 분석을 신청합니다.</p>
+                <p>신청일: <input type="date" name="signature_date" style="border:none; border-bottom:1px solid #000; background:transparent;"></p>
+                <p>신청자 서명: <span class="signature-box"></span></p>
+            </div>
+
+
+        </form>
+
+        <div class="form-footer">
+            <p><strong>부산대학교 의과대학 조직병리코어센터</strong></p>
+            <p>주소: (50612)경상남도 양산시 물금읍 부산대학로 49, 부산대학교 양산캠퍼스 첨단의생명융합센터 202호</p>
+            <p>전화: 051-510-8057, 8525 | 이메일: histopath@pusan.ac.kr</p>
+        </div>
+
+        <button type="button" class="print-btn" onclick="window.print()">신청서 인쇄</button>
+    </div>
+
+    <script>
+        // 총 수량 자동 계산
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#servicesTableBody tr');
+            
+            rows.forEach((row, index) => {
+                const sampleInput = row.querySelector(`input[name="sample_count_${index + 1}"]`);
+                const slideInput = row.querySelector(`input[name="slide_count_${index + 1}"]`);
+                const totalInput = row.querySelector(`input[name="total_count_${index + 1}"]`);
+                
+                if (sampleInput && slideInput && totalInput) {
+                    function calculateTotal() {
+                        const sampleCount = parseInt(sampleInput.value) || 0;
+                        const slideCount = parseInt(slideInput.value) || 0;
+                        totalInput.value = sampleCount * slideCount;
+                    }
+                    
+                    sampleInput.addEventListener('input', calculateTotal);
+                    slideInput.addEventListener('input', calculateTotal);
+                }
+            });
+            
+            // 오늘 날짜 자동 입력
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelector('input[name="application_date"]').value = today;
+            document.querySelector('input[name="signature_date"]').value = today;
+            
+            // URL 파라미터에서 데이터 가져와서 자동 입력
+            loadDataFromURL();
+        });
+
+        // URL 파라미터에서 데이터 로드하여 폼에 자동 입력
+        function loadDataFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (!dataParam) return;
+            
+            try {
+                const formData = JSON.parse(dataParam);
+                
+                // 신청자 정보 자동 입력
+                if (formData.name) {
+                    document.querySelector('input[name="applicant_name"]').value = formData.name;
+                }
+                if (formData.institution) {
+                    document.querySelector('input[name="institution"]').value = formData.institution;
+                }
+                if (formData.department) {
+                    document.querySelector('input[name="department"]').value = formData.department;
+                }
+                if (formData.email) {
+                    document.querySelector('input[name="email"]').value = formData.email;
+                }
+                if (formData.phone) {
+                    document.querySelector('input[name="phone"]').value = formData.phone;
+                }
+                if (formData.sampleName) {
+                    document.querySelector('textarea[name="sample_name"]').value = formData.sampleName;
+                }
+                if (formData.specialRequests) {
+                    document.querySelector('textarea[name="special_requests"]').value = formData.specialRequests;
+                }
+                
+                // 검체 종류 자동 선택
+                if (formData.sampleTypes && formData.sampleTypes.length > 0) {
+                    formData.sampleTypes.forEach(type => {
+                        if (type.includes('조직')) {
+                            const checkbox = document.getElementById('tissue');
+                            if (checkbox) checkbox.checked = true;
+                        } else if (type.includes('세포')) {
+                            const checkbox = document.getElementById('cell');
+                            if (checkbox) checkbox.checked = true;
+                        } else if (type.includes('기타')) {
+                            const checkbox = document.getElementById('other_sample');
+                            if (checkbox) checkbox.checked = true;
+                        }
+                    });
+                }
+                
+                // 고정액 자동 선택
+                if (formData.fixatives && formData.fixatives.length > 0) {
+                    formData.fixatives.forEach(fixative => {
+                        if (fixative.includes('NBF')) {
+                            const checkbox = document.getElementById('nbf');
+                            if (checkbox) checkbox.checked = true;
+                        } else if (fixative.includes('Alcohol')) {
+                            const checkbox = document.getElementById('alcohol');
+                            if (checkbox) checkbox.checked = true;
+                        } else if (fixative.includes('기타')) {
+                            const checkbox = document.getElementById('other_fixative');
+                            if (checkbox) checkbox.checked = true;
+                        }
+                    });
+                }
+                
+                // 서비스 정보 자동 입력
+                if (formData.services && formData.services.length > 0) {
+                    // 서비스별 체크박스 자동 선택
+                    autoSelectServiceCheckboxes(formData.services);
+                    
+                    // 서비스 테이블에 자동 입력
+                    fillServiceTable(formData.services);
+                }
+                
+                // 페이지 상단에 안내 메시지 표시
+                showAutoFillMessage();
+                
+            } catch (error) {
+                console.error('데이터 로드 중 오류:', error);
+            }
+        }
+
+                 // 서비스별 체크박스 자동 선택
+         function autoSelectServiceCheckboxes(services) {
+             const serviceMapping = {
+                 '파라핀 포매': 'paraffin',
+                 '동결절편': 'frozen',
+                 '특수염색': 'pas', // 특수염색의 경우 대표로 PAS 선택
+                 '면역조직화학염색 (IHC)': 'ihc',
+                 '면역세포화학염색 (ICC)': 'icc',
+                 '면역형광염색 (IF)': 'if_staining',
+                 '형광제자리부합법 (FISH)': 'fish',
+                 'Tissue Microarray (TMA)': 'tma',
+                 'DNA/RNA 추출': 'dna_extraction',
+                 'Alcian Blue 염색': 'alcian_blue',
+                 'Pico Sirius Red 염색': 'pico_sirius_red'
+             };
+
+            services.forEach(service => {
+                const checkboxId = serviceMapping[service.mainService];
+                if (checkboxId) {
+                    const checkbox = document.getElementById(checkboxId);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                }
+            });
+        }
+
+        // 서비스 테이블에 데이터 자동 입력
+        function fillServiceTable(services) {
+            const tableBody = document.getElementById('servicesTableBody');
+            const rows = tableBody.querySelectorAll('tr');
+            
+            services.forEach((service, index) => {
+                if (index < rows.length) {
+                    const row = rows[index];
+                    
+                    // 검체 수
+                    const sampleCountInput = row.querySelector(`input[name="sample_count_${index + 1}"]`);
+                    if (sampleCountInput) {
+                        sampleCountInput.value = service.sampleCount;
+                    }
+                    
+                    // 서비스명
+                    const serviceNameInput = row.querySelector(`input[name="service_name_${index + 1}"]`);
+                    if (serviceNameInput) {
+                        serviceNameInput.value = service.mainService;
+                    }
+                    
+                    // 세부 서비스
+                    const antibodyTypeInput = row.querySelector(`input[name="antibody_type_${index + 1}"]`);
+                    if (antibodyTypeInput && service.subService) {
+                        antibodyTypeInput.value = service.subService;
+                    }
+                    
+                    // 슬라이드 수
+                    const slideCountInput = row.querySelector(`input[name="slide_count_${index + 1}"]`);
+                    if (slideCountInput) {
+                        slideCountInput.value = service.slideCount;
+                    }
+                    
+                    // 총 수량 (자동 계산)
+                    const totalCountInput = row.querySelector(`input[name="total_count_${index + 1}"]`);
+                    if (totalCountInput) {
+                        totalCountInput.value = service.totalCount || (parseInt(service.sampleCount) * parseInt(service.slideCount));
+                    }
+                }
+            });
+        }
+
+        // 자동 입력 완료 메시지 표시
+        function showAutoFillMessage() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #28a745;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-size: 14px;
+            `;
+            message.innerHTML = '✅ 온라인 신청 내용이 자동으로 입력되었습니다!';
+            
+            document.body.appendChild(message);
+            
+            // 3초 후 메시지 제거
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

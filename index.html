@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histopathology Core Center - 부산대학교 의과대학</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -52,6 +52,187 @@
             font-size: 0.9em;
         }
         
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            width: auto;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        /* 삭제 버튼 스타일 */
+        .btn-delete, .btn-clear {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-delete:hover, .btn-clear:hover {
+            background-color: #c82333;
+        }
+        
+        .btn-clear {
+            background-color: #6c757d;
+        }
+        
+        .btn-clear:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        
+        .current-service {
+            background-color: #f8f9fa !important;
+            border-left: 3px solid #007bff;
+        }
+        
+        /* 입력 필드 클리어 버튼 스타일 */
+        .input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .clear-input-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-input-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        /* JavaScript로 제어하므로 CSS 자동 표시 규칙 제거 */
+        
+        .input-wrapper input {
+            padding-right: 30px;
+        }
+        
+        .input-wrapper textarea {
+            padding-right: 30px;
+        }
+        
+        /* Select 요소 클리어 버튼 */
+        .clear-select-btn {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-select-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        .input-wrapper select {
+            padding-right: 45px;
+        }
+        
+        /* 체크박스 클리어 버튼 */
+        .clear-checkbox-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 4px;
+            margin-left: 5px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: none;
+        }
+        
+        .clear-checkbox-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        .checkbox-item input:checked + label + .clear-checkbox-btn {
+            display: inline-block;
+        }
+        
+        /* 체크박스 그룹 클리어 버튼 */
+        .clear-checkbox-group-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 4px;
+            margin-left: 10px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-checkbox-group-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
@@ -63,53 +244,115 @@
                 flex: none;
                 width: 100%;
             }
-
-            .header .container {
-                padding: 10px;
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
             }
-
-            .nav-list {
-                display: none;
+            
+            /* 추가 모바일 개선사항 */
+            .services-table {
+                font-size: 12px;
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;
             }
-
-            .mobile-menu-btn {
+            
+            .services-table thead,
+            .services-table tbody,
+            .services-table th,
+            .services-table td,
+            .services-table tr {
                 display: block;
             }
-
-            .hero-content h1 {
-                font-size: 1.5em;
-                line-height: 1.4;
+            
+            .services-table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
             }
-
-            .hero-content p {
-                font-size: 0.9em;
-                white-space: normal !important;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .service-card {
-                padding: 15px;
-            }
-
-            .guide-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .showcase-slider {
-                height: auto;
-            }
-
-            .showcase-slide {
-                height: auto;
-            }
-
-            .showcase-caption {
+            
+            .services-table tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
                 padding: 10px;
+                border-radius: 8px;
+                background: #f9f9f9;
+            }
+            
+            .services-table td {
+                border: none;
+                position: relative;
+                padding-left: 50% !important;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                white-space: normal;
+                text-align: left;
+            }
+            
+            .services-table td:before {
+                content: attr(data-label) ": ";
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #2c5282;
+            }
+            
+            .contact-info {
+                margin-bottom: 2rem;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info ul {
+                font-size: 0.9rem;
+                padding-left: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .clear-input-btn,
+            .clear-select-btn {
+                font-size: 14px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .input-wrapper input,
+            .input-wrapper select,
+            .input-wrapper textarea {
+                font-size: 16px; /* iOS 줌 방지 */
+            }
+            
+            label {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+            
+            .checkbox-item {
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            
+            .checkbox-item label {
+                margin-bottom: 0;
+                margin-left: 8px;
             }
         }
     </style>
@@ -119,7 +362,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="/">
+                <a href="#home">
                     <img src="assets/images/staining/pnu-logo.png" alt="부산대학교 의과대학 로고" class="logo-image">
                     <div class="logo-text">
                         <div class="text-line">
@@ -132,9 +375,9 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#home">홈</a></li>
-                    <li><a href="#services">서비스 소개</a></li>
+                    <li><a href="#services">분석 소개</a></li>
                     <li><a href="#guide">이용안내</a></li>
-                    <li><a href="#contact">서비스 신청</a></li>
+                    <li><a href="#contact">분석 신청</a></li>
                 </ul>
                 <button class="mobile-menu-btn">
                     <span></span>
@@ -150,7 +393,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>부산대학교 의과대학<br>Histopathology Core Center</h1>
-                <p>최첨단 장비와 전문 인력을 통한<br>정확하고 신뢰할 수 있는<br>조직병리 분석 서비스를 제공합니다.</p>
+                <p style="white-space: nowrap;">최첨단 장비와 전문 인력을 통한 정확하고 신뢰할 수 있는 조직병리 분석을 제공합니다.</p>
             </div>
         </div>
     </section>
@@ -223,15 +466,15 @@
         </div>
     </section>
 
-    <!-- 서비스 소개 섹션 -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2>서비스 소개</h2>
+            <!-- 분석 소개 섹션 -->
+        <section class="services" id="services">
+            <div class="container">
+            <h2>분석 소개</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-microscope"></i>
                     <h3>기본 조직처리 및 H&E 염색</h3>
-                    <p>기본적인 조직 처리와 H&E 염색<br>서비스를 제공합니다.</p>
+                    <p>기본적인 조직 처리와 H&E 염색<br>분석을 제공합니다.</p>
                     <ul class="service-details">
                         <li>파라핀 포매</li>
                         <li>동결절편</li>
@@ -255,7 +498,7 @@
                 <div class="service-card">
                     <i class="fas fa-dna"></i>
                     <h3>면역염색 및 분자병리</h3>
-                    <p>고급 면역염색 기법을 활용한<br>단백질 발현 분석 서비스를 제공합니다.</p>
+                    <p>고급 면역염색 기법을 활용한<br>단백질 발현 분석을 제공합니다.</p>
                     <ul class="service-details">
                         <li>면역조직화학염색 (IHC)</li>
                         <li>면역세포화학염색 (ICC)</li>
@@ -337,111 +580,214 @@
         </div>
     </section>
 
-    <!-- 서비스 신청 섹션 -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>서비스 신청</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>신청서 작성 안내</h3>
-                    <ul>
-                        <li>모든 필수 항목(*)을 빠짐없이 기재해 주세요.</li>
-                        <li>검체 정보를 정확하게 입력해 주세요.</li>
-                        <li>특별한 요청사항이 있다면 비고란에 작성해 주세요.</li>
-                    </ul>
+            <!-- 분석 신청 섹션 -->
+        <section class="contact" id="contact">
+            <div class="container">
+            <h2>분석 신청</h2>
+            <div class="contact-info">
+                <h3>신청서 작성 안내</h3>
+                <ul>
+                    <li>필수 항목(*)을 빠짐없이 기재해 주세요.</li>
+                    <li>검체 정보를 정확하게 입력해 주세요.</li>
+                    <li>특별한 요청사항이 있다면 비고란에 작성해 주세요.</li>
+                </ul>
+                <div style="margin-top: 15px; padding: 15px; background-color: #e8f4fd; border-left: 4px solid #2c5282; border-radius: 4px;">
+                    <h4 style="margin: 0 0 10px 0; color: #2c5282;">📋 공식 신청서 양식</h4>
+                    <p style="margin: 0 0 10px 0; font-size: 14px;">인쇄용 공식 신청서 양식을 다운로드하여 작성하실 수 있습니다.</p>
+                    <a href="application-form.html" target="_blank" style="display: inline-block; background-color: #2c5282; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 14px;">📄 공식 신청서 양식 보기</a>
+                    <button type="button" id="generate-form-btn" style="display: inline-block; background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; font-size: 14px; margin-left: 10px; cursor: pointer;">📋 입력 내용으로 신청서 생성</button>
                 </div>
+            </div>
+            <div class="contact-content">
                 <div id="service-requests">
                     <form class="contact-form" id="serviceForm">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">신청자/담당교수 *</label>
-                                <input type="text" id="name" name="name" placeholder="신청자/담당교수" required>
+                                <div class="input-wrapper">
+                                    <input type="text" id="name" name="name" placeholder="신청자/담당교수" required>
+                                    <button type="button" class="clear-input-btn" data-target="name">×</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="institution">소속기관 *</label>
-                                <input type="text" id="institution" name="institution" required>
+                                <div class="input-wrapper">
+                                    <input type="text" id="institution" name="institution" placeholder="소속기관" required>
+                                    <button type="button" class="clear-input-btn" data-target="institution">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="department">부서/학과 *</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="department" name="department" placeholder="부서 또는 학과명을 입력하세요" required>
+                                    <button type="button" class="clear-input-btn" data-target="department">×</button>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">이메일 *</label>
-                                <input type="email" id="email" name="email" required>
+                                <div class="input-wrapper">
+                                    <input type="email" id="email" name="email" required>
+                                    <button type="button" class="clear-input-btn" data-target="email">×</button>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone">연락처 *</label>
-                                <input type="tel" id="phone" name="phone" required>
+                                <div class="input-wrapper">
+                                    <input type="tel" id="phone" name="phone" required>
+                                    <button type="button" class="clear-input-btn" data-target="phone">×</button>
+                                </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group service-group">
-                                <label for="main-service">의뢰 서비스 *</label>
-                                <select id="main-service" name="main-service" required>
-                                    <option value="">서비스를 선택하세요</option>
-                                    <option value="paraffin">파라핀 포매</option>
-                                    <option value="frozen">동결절편</option>
-                                    <option value="special">특수염색</option>
-                                    <option value="ihc">면역조직화학염색 (IHC)</option>
-                                    <option value="icc">면역세포화학염색 (ICC)</option>
-                                    <option value="if">면역형광염색 (IF)</option>
-                                    <option value="fish">형광제자리부합법 (FISH)</option>
-                                    <option value="tma">Tissue Microarray (TMA)</option>
-                                    <option value="extraction">DNA/RNA 추출</option>
-                                </select>
+                            <div class="form-group count-group">
+                                <label for="sample-count">검체 수</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="sample-count" name="sample-count" min="1">
+                                    <button type="button" class="clear-input-btn" data-target="sample-count">×</button>
+                                </div>
+                            </div>
+                                                <div class="form-group service-group">
+                        <label for="main-service">의뢰 분석</label>
+                        <div class="input-wrapper">
+                            <select id="main-service" name="main-service">
+                                <option value="">분석을 선택하세요</option>
+                                        <option value="paraffin">파라핀 포매</option>
+                                        <option value="frozen">동결절편</option>
+                                        <option value="special">특수염색</option>
+                                        <option value="ihc">면역조직화학염색 (IHC)</option>
+                                        <option value="icc">면역세포화학염색 (ICC)</option>
+                                        <option value="if">면역형광염색 (IF)</option>
+                                        <option value="fish">형광제자리부합법 (FISH)</option>
+                                        <option value="tma">Tissue Microarray (TMA)</option>
+                                        <option value="extraction">DNA/RNA 추출</option>
+                                    </select>
+                            <button type="button" class="clear-select-btn" data-target="main-service">×</button>
+                        </div>
+                            </div>
+                                                <div class="form-group service-group sub-service-group" style="display: none;">
+                        <label for="sub-service">세부 분석</label>
+                        <div class="input-wrapper">
+                            <select id="sub-service" name="sub-service" disabled>
+                                <option value="">세부 분석을 선택하세요</option>
+                                    </select>
+                            <button type="button" class="clear-select-btn" data-target="sub-service">×</button>
+                        </div>
+                            </div>
+                            <div class="form-group service-group special-type-group" style="display: none;">
+                                <label for="special-type">특수염색 종류</label>
+                                <div class="input-wrapper">
+                                    <select id="special-type" name="special-type" disabled>
+                                        <option value="">특수염색 종류를 선택하세요</option>
+                                    </select>
+                                    <button type="button" class="clear-select-btn" data-target="special-type">×</button>
+                                </div>
                             </div>
                             <div class="form-group count-group">
-                                <label for="sample-count">검체 수 *</label>
-                                <input type="number" id="sample-count" name="sample-count" min="1" required>
+                                <label for="slide-count">슬라이드 수</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="slide-count" name="slide-count" min="1">
+                                    <button type="button" class="clear-input-btn" data-target="slide-count">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group count-group">
+                                <label for="total-count">의뢰 총수량</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="total-count" name="total-count" readonly>
+                                    <button type="button" class="clear-input-btn" data-target="total-count" style="display: none;">×</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="special-type-row" style="display: none;">
-                            <div class="form-group">
-                                <label for="special-type">특수염색 종류 *</label>
-                                <select id="special-type" name="special-type" required disabled>
-                                    <option value="">특수염색 종류를 선택하세요</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="sub-service-row" style="display: none;">
-                            <div class="form-group">
-                                <label for="sub-service">세부 서비스 *</label>
-                                <select id="sub-service" name="sub-service" required disabled>
-                                    <option value="">세부 서비스를 선택하세요</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="slide-count">슬라이드 수 *</label>
-                            <input type="number" id="slide-count" name="slide-count" min="1" required>
-                        </div>
-                        <div class="selected-service-info">
-                            <div class="info-row">
-                                <span>검체 수</span>
-                                <span>의뢰 서비스</span>
-                                <span>세부 서비스</span>
-                                <span>슬라이드 수</span>
-                            </div>
-                            <div id="selected-services-list">
-                                <!-- 선택된 서비스들이 여기에 추가됩니다 -->
-                            </div>
-                        </div>
+                        <table class="services-table">
+                            <thead>
+                                <tr>
+                                    <th>검체 수</th>
+                                                                <th>의뢰 분석</th>
+                            <th>세부 분석</th>
+                                    <th>슬라이드 수</th>
+                                    <th>의뢰 총수량</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody id="services-list">
+                                <!-- 선택된 분석들이 여기에 표시됩니다 -->
+                            </tbody>
+                        </table>
+
                         <div class="button-group">
-                            <button type="button" id="add-service-btn" class="btn btn-secondary">+ 추가 의뢰 서비스</button>
+                            <button type="button" id="add-service-btn" class="btn btn-secondary">+ 추가 의뢰 분석</button>
                         </div>
                         <div class="form-group">
-                            <label for="sample-info">검체 정보 *</label>
-                            <textarea id="sample-info" name="sample-info" rows="4" placeholder="검체명과 조직 방향을 입력해주세요." required></textarea>
+                            <label for="sample-name">검체명 (Sample Name) *</label>
+                            <div class="input-wrapper">
+                                <textarea id="sample-name" name="sample-name" rows="3" placeholder="검체명을 상세히 기재해주세요" required></textarea>
+                                <button type="button" class="clear-input-btn" data-target="sample-name" style="top: 20px;">×</button>
+                            </div>
                         </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>검체 종류 (Sample Type) <button type="button" class="clear-checkbox-group-btn" data-target="sample-type" title="모든 검체 종류 선택 해제">×</button></label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="tissue" name="sample-type" value="tissue">
+                                        <label for="tissue">조직 (Tissue)</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="tissue" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="cell" name="sample-type" value="cell">
+                                        <label for="cell">세포 (Cell)</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="cell" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="other-sample" name="sample-type" value="other">
+                                        <label for="other-sample">기타</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="other-sample" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>고정액 (Fixative) <button type="button" class="clear-checkbox-group-btn" data-target="fixative" title="모든 고정액 선택 해제">×</button></label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="nbf" name="fixative" value="nbf">
+                                        <label for="nbf">10% NBF</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="nbf" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="alcohol" name="fixative" value="alcohol">
+                                        <label for="alcohol">Alcohol</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="alcohol" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="other-fixative" name="fixative" value="other">
+                                        <label for="other-fixative">기타</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="other-fixative" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
-                            <label for="request-details">요청사항</label>
-                            <textarea id="request-details" name="request-details" rows="4" placeholder="추가 요청사항이 있으시면 입력해주세요."></textarea>
+                            <label for="special-requests">특별 요청사항 (Special Requests)</label>
+                            <div class="input-wrapper">
+                                <textarea id="special-requests" name="special-requests" rows="3" placeholder="특별한 처리 방법이나 주의사항이 있으면 기재해주세요"></textarea>
+                                <button type="button" class="clear-input-btn" data-target="special-requests" style="top: 20px;">×</button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">신청하기</button>
+                        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary">신청하기</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="js/main.js"></script>
     <script src="script.js"></script>
 </body>
